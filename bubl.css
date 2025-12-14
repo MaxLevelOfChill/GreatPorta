@@ -1,0 +1,395 @@
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+:root {
+    --imperial-black: #000000;
+    --imperial-gold: #FFD700;
+    --imperial-red: #C8102E;
+    --imperial-blue: #0039A6;
+    --imperial-white: #FFFFFF;
+    --ribbon-orange: #FF8C00;
+    --ribbon-black: #000000;
+    --void-purple: #8B008B;
+    --void-dark: #2C003E;
+}
+
+body {
+    background: 
+        /* Флаг Российской Империи (исторический) */
+        linear-gradient(to bottom, 
+            var(--imperial-white) 0%, 
+            var(--imperial-white) 33%, 
+            var(--imperial-blue) 33%, 
+            var(--imperial-blue) 66%, 
+            var(--imperial-red) 66%, 
+            var(--imperial-red) 100%);
+    background-attachment: fixed;
+    color: var(--imperial-black);
+    line-height: 1.6;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Георгиевские ленты по бокам */
+.side-ribbon {
+    position: fixed;
+    top: 0;
+    width: 60px;
+    height: 100vh;
+    z-index: 999;
+    background: repeating-linear-gradient(
+        to bottom,
+        var(--ribbon-orange),
+        var(--ribbon-orange) 20px,
+        var(--ribbon-black) 20px,
+        var(--ribbon-black) 40px
+    );
+    box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+}
+
+.left-ribbon {
+    left: 0;
+    border-right: 3px solid var(--imperial-gold);
+}
+
+.right-ribbon {
+    right: 0;
+    border-left: 3px solid var(--imperial-gold);
+}
+
+.container {
+    width: 85%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 10;
+}
+
+section {
+    padding: 100px 0;
+    position: relative;
+}
+
+h1, h2, h3 {
+    margin-bottom: 20px;
+    color: var(--imperial-black);
+    text-shadow: 2px 2px 4px rgba(255, 215, 0, 0.3);
+}
+
+h2 {
+    font-size: 2.8rem;
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(to right, var(--imperial-gold), var(--imperial-red));
+    border-radius: 2px;
+}
+
+p {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    font-family: 'Times New Roman', serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, var(--imperial-gold), var(--imperial-red));
+    color: var(--imperial-white);
+    border: 2px solid var(--imperial-gold);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(45deg, var(--imperial-red), var(--imperial-gold));
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--imperial-black);
+    border: 2px solid var(--imperial-black);
+}
+
+.btn-secondary:hover {
+    background: var(--imperial-black);
+    color: var(--imperial-gold);
+    transform: translateY(-3px);
+}
+
+/* Шапка и навигация */
+header {
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 3px solid var(--imperial-gold);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--imperial-gold);
+    font-family: 'Cinzel', serif;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 40px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--imperial-white);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    font-size: 1.1rem;
+}
+
+.nav-links a:hover {
+    color: var(--imperial-gold);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--imperial-gold);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.hamburger span {
+    width: 30px;
+    height: 4px;
+    background-color: var(--imperial-white);
+    transition: all 0.3s ease;
+}
+
+/* Главный экран */
+.hero {
+    background: rgba(0, 0, 0, 0.6);
+    color: var(--imperial-white);
+    padding: 180px 0 120px;
+    margin-top: 80px;
+    border-bottom: 5px solid var(--imperial-gold);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><text x="50%" y="50%" font-family="Times New Roman" font-size="14" fill="rgba(255,215,0,0.1)" text-anchor="middle" dominant-baseline="middle">✠</text></svg>');
+    opacity: 0.3;
+    z-index: 1;
+}
+
+.hero .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 15px;
+    color: var(--imperial-gold);
+    font-family: 'Cinzel', serif;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+}
+
+.subtitle {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    opacity: 0.9;
+    color: var(--imperial-white);
+    font-style: italic;
+}
+
+.hero-description {
+    font-size: 1.3rem;
+    max-width: 650px;
+    margin-bottom: 40px;
+    opacity: 0.9;
+    line-height: 1.8;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.hero-image {
+    flex: 1;
+    text-align: center;
+    position: relative;
+}
+
+.photo-container {
+    position: relative;
+    display: inline-block;
+}
+
+.placeholder-image {
+    width: 350px;
+    height: 350px;
+    background: linear-gradient(45deg, var(--imperial-blue), var(--imperial-red));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    border: 8px solid var(--imperial-gold);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+}
+
+.placeholder-image::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><text x="50%" y="50%" font-family="Arial" font-size="24" fill="white" text-anchor="middle" dominant-baseline="middle">Матвей Курилов</text></svg>');
+    background-size: cover;
+}
+
+/* Печать Пустоты из Warhammer */
+.void-seal {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 200px;
+    background: 
+        radial-gradient(circle at 50% 50%, 
+            transparent 30%, 
+            var(--void-purple) 30%, 
+            var(--void-purple) 40%, 
+            transparent 40%),
+        repeating-conic-gradient(
+            from 0deg,
+            var(--void-dark) 0deg 10deg,
+            var(--void-purple) 10deg 20deg
+        );
+    border-radius: 50%;
+    border: 5px solid var(--imperial-gold);
+    box-shadow: 
+        0 0 30px var(--void-purple),
+        inset 0 0 30px var(--void-dark);
+    z-index: 1;
+    animation: void-rotate 20s linear infinite;
+}
+
+@keyframes void-rotate {
+    0% { transform: translateX(-50%) rotate(0deg); }
+    100% { transform: translateX(-50%) rotate(360deg); }
+}
+
+.void-seal::before {
+    content: '☩';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 60px;
+    color: var(--imperial-gold);
+    text-shadow: 0 0 15px var(--void-purple);
+    z-index: 2;
+}
+
+/* Обо мне */
+.about {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-top: 3px solid var(--imperial-gold);
+    border-bottom: 3px solid var(--imperial-red);
+}
+
+.about-content {
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+}
+
+.about-text {
+    flex: 2;
+}
+
+.about-stats {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;}
